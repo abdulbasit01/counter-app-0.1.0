@@ -14,8 +14,7 @@ class Counter extends Component {
         fontSize:20,
     };
     render() {
-        let classes="badge m-2 badge-";
-        this.state.counter==0 ? classes+="warning" : classes+="secondary";
+        let classes = this.getClass();
         return (
             <div> {/* we use React.fragmant insted of div*/}
                 {/* <img src={this.state.imageUrl}/> */}
@@ -24,6 +23,12 @@ class Counter extends Component {
             </div>
         );
     }
+    getClass() {
+        let classes = "badge m-2 badge-";
+        this.state.counter == 0 ? classes += "warning" : classes += "secondary";
+        return classes;
+    }
+
     doSomething() {
         return this.state.counter===0 ? "Zero": this.state.counter;    
         
