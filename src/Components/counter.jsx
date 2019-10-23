@@ -25,7 +25,11 @@ class Counter extends Component {
                 {/* <input type="text" value ={this.state.counter}></input> */}
                 <label className="label label-success">{this.state.counter}</label>
                 <br></br>
-                <span ><img src={require('./images/images.jpeg')} onClick={this.handleEventsAdd} className="img-fluid"/> <img src={require('./images/images.png')} onClick={this.handleEventsSub} className="img-fluid"/></span>
+                <span ><img src={require('./images/images.jpeg')} onClick={this.handleEventsAdd} className="img-fluid"/> <img src={require('./images/images.png')} onClick={this.handleEventsSub} className="img-fluid"/>
+                <button onClick={()=>this.props.onPress(this.props.id)}>
+                    change
+                </button>
+                </span>
                 
             </div>
         );
