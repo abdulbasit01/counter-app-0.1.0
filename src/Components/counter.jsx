@@ -1,38 +1,36 @@
 import React, {Component} from 'react';
 class Counter extends Component {
     state={ 
-        counter:0,
+        counter:this.props.value,
         //imageUrl:'https://picsum.photos/200',
+        products:["Product1", "Product2", "Product3"],
 
     };
-    style1={
-        fontWeight:"bold",
-        padding:5,
-    };
-    newStyle={
-        fontWeight:"bold",
-        fontSize:20,
-    };
+    handleEventsAdd=()=>{
+        this.setState({counter: this.state.counter + 1})
+        console.log("Clicked!!!",this)
+    }
+    handleEventsSub =()=>{
+        this.state.counter!=0 ? this.setState({counter: this.state.counter -1}): null;
+           }
+    renderProducts(){
+            // {if(this.state.products.length===0)return <p>there are no tags</p>;
+            // return <ul>{this.state.products.map(products => <li key ={products}>{products}</li>)}</ul> ;     
+            // }
+    }
     render() {
-        let classes = this.getClass();
         return (
-            <div> {/* we use React.fragmant insted of div*/}
-                {/* <img src={this.state.imageUrl}/> */}
-                <span style={this.style1} className={classes}>{this.doSomething()}</span>
-                <button style={this.newStyle} className="btn btn-secondary btn-small">Incremenet</button>
+            <div className="costom-div"> 
+                {/* {this.renderProducts()} */}
+                {/* <input type="text" value ={this.state.counter}></input> */}
+                <label className="label label-success">{this.state.counter}</label>
+                <br></br>
+                <span ><img src={require('./images/images.jpeg')} onClick={this.handleEventsAdd} className="img-fluid"/> <img src={require('./images/images.png')} onClick={this.handleEventsSub} className="img-fluid"/></span>
+                
             </div>
         );
     }
-    getClass() {
-        let classes = "badge m-2 badge-";
-        this.state.counter == 0 ? classes += "warning" : classes += "secondary";
-        return classes;
-    }
-
-    doSomething() {
-        return this.state.counter===0 ? "Zero": this.state.counter;    
-        
-    }
+    
 }
  
 export default Counter;
